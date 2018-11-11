@@ -7,7 +7,6 @@ import {
   Button,
 
 } from 'react-bootstrap';
-import {Rectangle} from 'react-shapes';
 import { Container, Row, Col} from 'reactstrap';
 
 //let imgUrl = 'images/berlin.jpg'
