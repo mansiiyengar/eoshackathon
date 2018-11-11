@@ -37,12 +37,15 @@ import Login from '../Login';
 import Invoice from '../Invoice';
 
 
+
 ReactGA.initialize('UA-108802756-8', {
   debug: true,
 });
 
-
-
+//place private key of seller
+const config={
+  keyProvider: '5K8zmtflkfldkfxd8YiT6V1mNSDgGFsxRUqsyqPvd5o8Pct1K4LyLUhghfgfgfgfe3kSf'
+ };
 
 //Local testnet
 const network = {
@@ -55,6 +58,7 @@ const network = {
 
 
 const defaultEos = Eos({
+  keyProvider: config.keyProvider,
   httpEndpoint: network.protocol + '://' + network.host + ':' + network.port,
   chainId: network.chainId,
   verbose: true,
@@ -66,7 +70,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      eos: defaultEos,
+      eos: defaultEos
    
     };
 
@@ -92,6 +96,8 @@ class App extends Component {
             )}} />
            <Route path={process.env.PUBLIC_URL + '/invoice'} render={(props) => { return (
               <Invoice
+              {...props}
+              eos={this.state.eos}
               />
             )}} />
           </Switch>
